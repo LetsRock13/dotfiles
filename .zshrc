@@ -95,7 +95,7 @@ export LANG=de_DE.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="nvim ~/.dotfiles/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:/opt/tmux"
@@ -103,8 +103,6 @@ export RAYLIB_LIB_PATH="/opt/raylib/lib"
 export RAYLIB_INCLUDE_PATH="/opt/raylib/include"
 export LD_LIBRARY_PATH="/usr/local/lib:$RAYLIB_LIB_PATH"
 export C_INCLUDE_PATH="/usr/local/include:$RAYLIB_INCLUDE_PATH"
-
-alias cdvrdesk='cd $DEV_DIR/repos/vr_desk'
 
 alias vim='nvim'
 alias ls='exa'
