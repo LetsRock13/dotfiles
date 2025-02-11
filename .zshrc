@@ -1,4 +1,9 @@
+export LANG=de_DE.UTF-8
+export LANGUAGE=de_DE.UTF-8
+export LC_ALL=de_DE.UTF-8
+
 bindkey -v
+
 
 # Load my prompt 
 source ~/dotfiles/zshconf/.myprompt.zsh
@@ -6,8 +11,13 @@ source ~/dotfiles/zshconf/.myprompt.zsh
 # Include zplug file
 source ~/dotfiles/zshconf/.zplug.zsh
 
-# You may need to manually set your language environment
-export LANG=de_DE.UTF-8
+# Start ssh-agent for example for github
+if [ -f "$HOME/.start_ssh-agent" ]; then
+	source $HOME/.start_ssh-agent
+
+	## Add private ssh keys
+	ssh-add "$HOME/.ssh/wsl_debian"
+fi
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -24,6 +34,15 @@ fi
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+if [ -d "$HOME/.dotnet" ]; then
+	export DOTNET_ROOT="$HOME/.dotnet"
+fi
+
+if [ $DOTNET_ROOT != "" ]; then
+	export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+fi
 
 export PATH="$PATH:/opt/tmux"
 export RAYLIB_LIB_PATH="/opt/raylib/lib"
@@ -42,6 +61,9 @@ alias cat='batcat --decorations=always --color=always --theme=Dracula'
 alias cl='clear'
 alias tldr='tldr --color always'
 alias lg='lazygit'
+alias cdps='cd /mnt/e/repos/poststream/'
+alias cddb='cd /mnt/e/repos/postStream\ Server\ Umzug'
+alias devlog='nvim /mnt/c/Users/Robert\ Hingst/Documents/_devLog/DEV_Log.txt'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
