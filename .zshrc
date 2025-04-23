@@ -4,7 +4,6 @@ export LC_ALL=de_DE.UTF-8
 
 bindkey -v
 
-
 # Load my prompt 
 source ~/dotfiles/zshconf/.myprompt.zsh
 
@@ -16,7 +15,7 @@ if [ -f "$HOME/.start_ssh-agent" ]; then
 	source $HOME/.start_ssh-agent
 
 	## Add private ssh keys
-	ssh-add "$HOME/.ssh/wsl_debian"
+	ssh-add -q "$HOME/.ssh/wsl_debian"
 fi
 
 # Preferred editor for local and remote sessions
@@ -44,15 +43,19 @@ if [ $DOTNET_ROOT != "" ]; then
 	export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
 fi
 
+if [ "/opt/openjdk-21.0.6" != "" ]; then
+	export JAVA_HOME="/opt/openjdk-21.0.6"
+fi
+
 export PATH="$PATH:/opt/tmux"
 export RAYLIB_LIB_PATH="/opt/raylib/lib"
 export RAYLIB_INCLUDE_PATH="/opt/raylib/include"
 export LD_LIBRARY_PATH="/usr/local/lib:$RAYLIB_LIB_PATH"
 export C_INCLUDE_PATH="/usr/local/include:$RAYLIB_INCLUDE_PATH"
 export ZIG_HOME="/opt/zig_0.13.0"
+export PATH="$PATH:$JAVA_HOME"
 export PATH="$PATH:$ZIG_HOME"
 
-alias vim='nvim'
 alias ls='exa'
 alias ll='exa -la'
 alias lt='exa -lT'
@@ -64,6 +67,8 @@ alias lg='lazygit'
 alias cdps='cd /mnt/e/repos/poststream/'
 alias cddb='cd /mnt/e/repos/postStream\ Server\ Umzug'
 alias devlog='nvim /mnt/c/Users/Robert\ Hingst/Documents/_devLog/DEV_Log.txt'
+alias nvimconf='nvim ~/.config/nvim/.'
+alias gtypist='gtypist ttde.typ' 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
