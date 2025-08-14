@@ -30,8 +30,9 @@ export RAYLIB_LIB_PATH="/opt/raylib/lib"
 export RAYLIB_INCLUDE_PATH="/opt/raylib/include"
 export LD_LIBRARY_PATH="/usr/local/lib:$RAYLIB_LIB_PATH"
 export C_INCLUDE_PATH="/usr/local/include:$RAYLIB_INCLUDE_PATH"
-export ZIG_HOME="/opt/zig_0.13.0"
+export ZIG_HOME="/opt/zig"
 export PATH="$PATH:$ZIG_HOME"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 
 alias vim='nvim'
 alias ls='exa'
