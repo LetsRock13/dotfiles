@@ -60,6 +60,7 @@ export PATH="$PATH:$JAVA_HOME"
 export PATH="$PATH:$JAVA_HOME/bin/java"
 export PATH="$PATH:$JAVA_HOME/bin/javac"
 export PATH="$PATH:$ZIG_HOME"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 
 alias ls='exa'
 alias ll='exa -la'
