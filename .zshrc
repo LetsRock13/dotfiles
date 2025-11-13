@@ -2,7 +2,7 @@ export LANG=de_DE.UTF-8
 export LANGUAGE=de_DE.UTF-8
 export LC_ALL=de_DE.UTF-8
 
-bindkey -v
+bindkey -e
 
 # Load my prompt 
 source ~/dotfiles/zshconf/.myprompt.zsh
@@ -16,6 +16,7 @@ if [ -f "$HOME/.start_ssh-agent" ]; then
 
 	## Add private ssh keys
 	ssh-add -q "$HOME/.ssh/wsl_debian"
+	ssh-add -q "$HOME/.ssh/gitlab"
 fi
 
 # Preferred editor for local and remote sessions
@@ -43,9 +44,11 @@ if [ $DOTNET_ROOT != "" ]; then
 	export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
 fi
 
-if [ "/opt/openjdk-21.0.6" != "" ]; then
-	export JAVA_HOME="/opt/openjdk-21.0.6"
+if [ -d "/opt/openjdk-21.0.8" ]; then
+	export JAVA_HOME="/opt/openjdk-21.0.8"
 fi
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 export PATH="$PATH:/opt/tmux"
 export RAYLIB_LIB_PATH="/opt/raylib/lib"
@@ -54,6 +57,8 @@ export LD_LIBRARY_PATH="/usr/local/lib:$RAYLIB_LIB_PATH"
 export C_INCLUDE_PATH="/usr/local/include:$RAYLIB_INCLUDE_PATH"
 export ZIG_HOME="/opt/zig_0.13.0"
 export PATH="$PATH:$JAVA_HOME"
+export PATH="$PATH:$JAVA_HOME/bin/java"
+export PATH="$PATH:$JAVA_HOME/bin/javac"
 export PATH="$PATH:$ZIG_HOME"
 
 alias ls='exa'
@@ -66,9 +71,12 @@ alias tldr='tldr --color always'
 alias lg='lazygit'
 alias cdps='cd /mnt/e/repos/poststream/'
 alias cddb='cd /mnt/e/repos/postStream\ Server\ Umzug'
+alias cdxml='cd /mnt/e/repos/XmlTransform'
+alias cdai='cd /mnt/e/repos/autoimporter-2.0'
 alias devlog='nvim /mnt/c/Users/Robert\ Hingst/Documents/_devLog/DEV_Log.txt'
 alias nvimconf='nvim ~/.config/nvim/.'
 alias gtypist='gtypist ttde.typ' 
+alias cdcrm='cd /mnt/e/repos/postStream\ CRM'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
