@@ -15,8 +15,17 @@ if [ -f "$HOME/.start_ssh-agent" ]; then
 	source $HOME/.start_ssh-agent
 
 	## Add private ssh keys
-	ssh-add -q "$HOME/.ssh/wsl_debian"
-	ssh-add -q "$HOME/.ssh/gitlab"
+    if [ -f "$HOME/.ssh/wsl_debian" ]; then
+	    ssh-add -q "$HOME/.ssh/wsl_debian"
+    fi
+
+    if [ -f "$HOME/.ssh/gitlab" ]; then
+	    ssh-add -q "$HOME/.ssh/gitlab"
+    fi
+
+    if [ -f "$HOME/.ssh/archThinkPad" ]; then
+	    ssh-add -q "$HOME/.ssh/archThinkPad"
+    fi
 fi
 
 # Preferred editor for local and remote sessions
@@ -35,17 +44,19 @@ fi
 alias zshconfig="nvim ~/.dotfiles/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 if [ -d "$HOME/.dotnet" ]; then
 	export DOTNET_ROOT="$HOME/.dotnet"
-fi
-
-if [ $DOTNET_ROOT != "" ]; then
-	export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+    if [ $DOTNET_ROOT != "" ]; then
+        export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+    fi
 fi
 
 if [ -d "/opt/openjdk-21.0.8" ]; then
 	export JAVA_HOME="/opt/openjdk-21.0.8"
+fi
+
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -66,7 +77,7 @@ alias ls='exa'
 alias ll='exa -la'
 alias lt='exa -lT'
 alias llt='exa -laT'
-alias cat='batcat --decorations=always --color=always --theme=Dracula'
+alias cat='bat --decorations=always --color=always --theme=Dracula'
 alias cl='clear'
 alias tldr='tldr --color always'
 alias lg='lazygit'
@@ -91,7 +102,3 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
