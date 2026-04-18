@@ -10,6 +10,9 @@ source ~/dotfiles/zshconf/.myprompt.zsh
 # Include zplug file
 source ~/dotfiles/zshconf/.zplug.zsh
 
+# Colorize "man"
+source ~/dotfiles/colorman/colorman
+
 # Start ssh-agent for example for github
 if [ -f "$HOME/.start_ssh-agent" ]; then
 	source $HOME/.start_ssh-agent
@@ -48,19 +51,45 @@ if [ -d "/opt/openjdk-21.0.8" ]; then
 	export JAVA_HOME="/opt/openjdk-21.0.8"
 fi
 
+if [ -d "${HOME}/opt/bin/gf" ]; then
+	export GF_HOME="${HOME}/opt/bin/gf"
+fi
+
+if [ -d "${HOME}/opt/bin/flutter/bin" ]; then
+	export FLUTTER_HOME="${HOME}/opt/bin/flutter/bin"
+fi
+
+if [ -d "${HOME}/opt/bin/kotlinc/bin" ]; then
+	export KOTLIN_HOME="${HOME}/opt/bin/kotlinc/bin"
+fi
+
+if [ -d "${HOME}/opt/bin/kotlin-native/bin" ]; then
+	export KOTLIN_NATIVE_HOME="${HOME}/opt/bin/kotlin-native/bin"
+fi
+
+if [ -d "${HOME}/opt/bin/gradle-9.3.1/bin" ]; then
+	export GRADLE_HOME="${HOME}/opt/bin/gradle-9.3.1/bin"
+fi
+
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-export PATH="$PATH:/opt/tmux"
 export RAYLIB_LIB_PATH="/opt/raylib/lib"
 export RAYLIB_INCLUDE_PATH="/opt/raylib/include"
 export LD_LIBRARY_PATH="/usr/local/lib:$RAYLIB_LIB_PATH"
 export C_INCLUDE_PATH="/usr/local/include:$RAYLIB_INCLUDE_PATH"
 export ZIG_HOME="/opt/zig"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+
+export PATH="$PATH:/opt/tmux"
 export PATH="$PATH:$JAVA_HOME"
 export PATH="$PATH:$JAVA_HOME/bin/java"
 export PATH="$PATH:$JAVA_HOME/bin/javac"
 export PATH="$PATH:$ZIG_HOME"
-export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+export PATH="$PATH:$GF_HOME"
+export PATH="$PATH:$FLUTTER_HOME"
+export PATH="$PATH:$KOTLIN_HOME"
+export PATH="$PATH:$KOTLIN_NATIVE_HOME"
+export PATH="$PATH:$GRADLE_HOME"
 
 alias ls='exa'
 alias ll='exa -la'
@@ -78,6 +107,7 @@ alias devlog='nvim /mnt/c/Users/Robert\ Hingst/Documents/_devLog/DEV_Log.txt'
 alias nvimconf='nvim ~/.config/nvim/.'
 alias gtypist='gtypist ttde.typ' 
 alias cdcrm='cd /mnt/e/repos/postStream\ CRM'
+alias zen='flatpak run app.zen_browser.zen&'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

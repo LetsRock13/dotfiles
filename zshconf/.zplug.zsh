@@ -6,7 +6,7 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "zsh-users/zsh-history-substring-search"
 
 # Include a batter vim support for zsh 
-zplug "jeffreytse/zsh-vi-mode"
+#zplug "jeffreytse/zsh-vi-mode"
 
 # Set the priority when loading
 # e.g., zsh-syntax-highlighting must be loaded
