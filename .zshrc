@@ -58,7 +58,6 @@ if [ -d "/opt/openjdk-21.0.8" ]; then
 	export JAVA_HOME="/opt/openjdk-21.0.8"
 fi
 
-<<<<<<< HEAD
 if [ -d "${HOME}/opt/bin/gf" ]; then
 	export GF_HOME="${HOME}/opt/bin/gf"
 fi
